@@ -336,6 +336,7 @@ class TimestreamConnectionTest {
 
     Assertions.assertTrue(connection.isValid(2));
     Assertions.assertEquals(2000, clientConfig.getValue().getConnectionTimeout());
+    Mockito.verify(mockQueryClient, Mockito.times(1)).shutdown();
   }
 
   @Test
@@ -355,6 +356,7 @@ class TimestreamConnectionTest {
 
     Assertions.assertFalse(connection.isValid(2));
     Assertions.assertEquals(2000, clientConfig.getValue().getConnectionTimeout());
+    Mockito.verify(mockQueryClient, Mockito.times(1)).shutdown();
   }
 
   @Test
